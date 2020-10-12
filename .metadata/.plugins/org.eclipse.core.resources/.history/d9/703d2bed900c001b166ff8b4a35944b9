@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
+   	  <script>
+         angular.module("myapp", [])
+         .controller("AjaxController", function($scope) {
+
+        	 $scope.getTime($scope,$http) {
+        		 var url="/AjaxDemoServlet";
+        		    $http.get(url).success( function(response) {
+                        $scope.time = response; 
+                     });
+        		 }
+        	 
+         });
+      </script>
+   <title>第一個AngularJS程序</title>
+   </head>
+   <body ng-app="myapp">
+      <div ng-controller="AjaxController" >
+         <h2>new time:{{time}}</h2>
+         <button ng-click="getTime()">取得現在時間</button>
+      </div>
+      
+   </body>
+</html>
